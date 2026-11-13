@@ -26,8 +26,6 @@
 <h3 id="upload-title">Compartilhe suas fotos</h3>
 <p class="small">Escolha fotos da galeria ou tire uma agora. Elas serão entregues com carinho aos noivos.</p>
 <form id="upload-form" action="{{ url_for('enviar') }}" method="post" enctype="multipart/form-data">
-<label class="field-label" for="guest-name">Seu nome <span>(opcional)</span></label>
-<input id="guest-name" type="text" name="nome" maxlength="70" autocomplete="name" placeholder="Como podemos te chamar?">
 <input id="photos" name="fotos" type="file" accept="image/jpeg,image/png,image/webp" multiple required hidden>
 <label for="photos" class="dropzone"><span class="plus-icon">＋</span><strong>Escolher fotos</strong><span>Toque para abrir a câmera ou galeria</span></label>
 <p class="selected" id="selected">Nenhuma foto selecionada</p>
@@ -35,7 +33,7 @@
 <button type="submit" id="submit" disabled>Enviar minhas fotos <span>↗</span></button>
 <div role="status" id="feedback" aria-live="polite"></div>
 </form>
-<p class="footnote">Até 10 fotos por vez • 16 MB por envio • JPG, PNG ou WebP</p>
+<p class="footnote">Até 2 fotos por vez • 16 MB por envio • JPG, PNG ou WebP</p>
 </section>
 <footer>Feito para celebrar o amor <span>♥</span></footer>
 </main>
