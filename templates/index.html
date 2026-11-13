@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f5f0e9">
+<title>{{ couple }} — Álbum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+<main class="page">
+<header class="intro">
+<div class="monogram">✳</div>
+<div class="eyebrow">UM DIA, INFINITAS MEMÓRIAS</div>
+<h1>{{ couple }}</h1>
+<p class="date">{{ date }}</p>
+<div class="separator"><span></span>✦<span></span></div>
+<h2>{{ heading }}</h2>
+<p class="lead">Você faz parte dessa história. Registre os sorrisos, os abraços e todos os instantes que merecem ser guardados para sempre.</p>
+</header>
+<section class="upload-card" aria-labelledby="upload-title">
+<div class="camera-icon">📷</div>
+<h3 id="upload-title">Compartilhe suas fotos</h3>
+<p class="small">Escolha fotos da galeria ou tire uma agora. Elas serão entregues com carinho aos noivos.</p>
+<form id="upload-form" action="{{ url_for('enviar') }}" method="post" enctype="multipart/form-data">
+<label class="field-label" for="guest-name">Seu nome <span>(opcional)</span></label>
+<input id="guest-name" type="text" name="nome" maxlength="70" autocomplete="name" placeholder="Como podemos te chamar?">
+<input id="photos" name="fotos" type="file" accept="image/jpeg,image/png,image/webp" multiple required hidden>
+<label for="photos" class="dropzone"><span class="plus-icon">＋</span><strong>Escolher fotos</strong><span>Toque para abrir a câmera ou galeria</span></label>
+<p class="selected" id="selected">Nenhuma foto selecionada</p>
+<div class="previews" id="previews" aria-live="polite"></div>
+<button type="submit" id="submit" disabled>Enviar minhas fotos <span>↗</span></button>
+<div role="status" id="feedback" aria-live="polite"></div>
+</form>
+<p class="footnote">Até 10 fotos por vez • 16 MB por envio • JPG, PNG ou WebP</p>
+</section>
+<footer>Feito para celebrar o amor <span>♥</span></footer>
+</main>
+<script src="{{ url_for('static',filename='app.js') }}" defer></script>
+</body>
+</html>
