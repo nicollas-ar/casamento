@@ -23,3 +23,5 @@ button:hover:not(:disabled){background:#755640}button:disabled{cursor:not-allowe
 #feedback{font-size:13px;line-height:1.5;margin-top:12px}#feedback.error{color:#a03933}#feedback.success{color:#34754a}
 .footnote{color:#a1988d;font-size:10px;margin-top:22px}footer{text-align:center;color:#9c9082;font-size:11px;margin-top:35px}footer span{color:#bc8b7e}
 @media(max-width:420px){.page{padding-top:38px}.upload-card{padding:28px 18px}.previews{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+.couple-gallery{display:flex;justify-content:center;align-items:center;margin:0 auto 28px;max-width:490px;padding:0 12px}.couple-gallery img{width:52%;aspect-ratio:1;object-fit:cover;border:6px solid var(--paper);outline:1px solid #c6a46c;border-radius:50%;box-shadow:0 12px 28px #45392b20}.couple-gallery img+img{margin-left:-10%;margin-top:52px}.couple-gallery img:first-child{object-position:center 38%}.couple-gallery img:last-child{object-position:center 32%}@media(max-width:420px){.couple-gallery img{border-width:4px}.couple-gallery{margin-bottom:22px}}
