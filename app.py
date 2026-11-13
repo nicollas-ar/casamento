@@ -63,20 +63,18 @@ def home():
 @app.post("/enviar")
 def enviar():
     photos = request.files.getlist("fotos")
-    if not photos or len(photos) > 10:
-        return jsonify(error="Selecione de 1 a 10 fotos."), 400
-    guest = " ".join(request.form.get("nome", "Convidado").split())[:70] or "Convidado"
+    if not photos or len(photos) > 2:
+        return jsonify(error="Selecione de 1 a 2 fotos."), 400
     sent = 0
     try:
         service = drive_service()
         for photo in photos:
             data = prepare_photo(photo)
             timestamp = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
-            safe_guest = "".join(c for c in guest if c.isalnum() or c in "-_ ")[:35].strip().replace(" ", "_") or "convidado"
-            name = f"{timestamp}_{safe_guest}_{uuid.uuid4().hex[:10]}.jpg"
+            name = f"{timestamp}_{uuid.uuid4().hex[:10]}.jpg"
             metadata = {"name": name,
                         "parents": [os.environ["GOOGLE_DRIVE_FOLDER_ID"]],
-                        "description": f"Enviada por {guest}"}
+                        "description": "Foto enviada pelo álbum do casamento"}
             media = MediaIoBaseUpload(data, mimetype="image/jpeg", resumable=False)
             service.files().create(body=metadata, media_body=media, fields="id", supportsAllDrives=True).execute()
             sent += 1
