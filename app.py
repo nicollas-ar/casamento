@@ -56,7 +56,7 @@ def prepare_photo(upload):
 @app.get("/")
 def home():
     return render_template("index.html",
-        couple=os.getenv("COUPLE_NAMES", "Nosso casamento"),
+        couple=os.getenv("COUPLE_NAMES", "Camila & Juan"),
         date=os.getenv("WEDDING_DATE", "Um dia para recordar"),
         heading=os.getenv("WEDDING_HEADING", "Cada momento merece ser lembrado."))
 
