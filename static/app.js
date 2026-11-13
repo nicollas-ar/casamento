@@ -13,11 +13,11 @@ input.addEventListener('change', () => {
   feedback.className = '';
   const photos = Array.from(input.files || []);
   selected.textContent = photos.length ? photos.length + ' foto(s) selecionada(s)' : 'Nenhuma foto selecionada';
-  if (photos.length > 10) {
-    feedback.textContent = 'Selecione no máximo 10 fotos por vez.';
+  if (photos.length > 2) {
+    feedback.textContent = 'Selecione no máximo 2 fotos por vez.';
     feedback.className = 'error';
   }
-  for (const photo of photos.slice(0, 10)) {
+  for (const photo of photos.slice(0, 2)) {
     if (!photo.type.startsWith('image/')) continue;
     const url = URL.createObjectURL(photo);
     urls.push(url);
@@ -26,7 +26,7 @@ input.addEventListener('change', () => {
     img.alt = 'Prévia da foto selecionada';
     previews.append(img);
   }
-  submit.disabled = !photos.length || photos.length > 10;
+  submit.disabled = !photos.length || photos.length > 2;
 });
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
